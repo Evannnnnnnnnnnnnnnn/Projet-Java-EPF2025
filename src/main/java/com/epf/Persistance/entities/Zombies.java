@@ -1,4 +1,4 @@
-package com.epf.Persistance;
+package com.epf.persistance.entities;
 
 public class Zombies {
     // id_zombie | nom | point_de_vie | attaque_par_seconde | degat_attaque | vitesse_de_deplacement | chemin_image 

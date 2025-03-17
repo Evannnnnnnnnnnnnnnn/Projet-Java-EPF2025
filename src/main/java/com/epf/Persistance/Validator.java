@@ -1,4 +1,4 @@
-package com.epf.Persistance;
+package com.epf.persistance;
 
 // Pour vérifier que les objects envoyé par le front sont valides (si j'ai bien compris)
 

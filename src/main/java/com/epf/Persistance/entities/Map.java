@@ -1,4 +1,4 @@
-package com.epf.Persistance;
+package com.epf.persistance.entities;
 
 public class Map {
     //id_map | ligne | colonne | chemin_image  

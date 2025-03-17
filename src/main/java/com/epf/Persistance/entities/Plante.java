@@ -1,4 +1,4 @@
-package com.epf.Persistance;
+package com.epf.persistance.entities;
 
 public class Plante {
     // id_plante | nom | point_de_vie | attaque_par_seconde | degat_attaque | cout | soleil_par_seconde | effet | chemin_image
