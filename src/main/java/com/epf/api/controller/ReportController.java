@@ -1,15 +1,17 @@
-package com.epf.api.controller;
+// package com.epf.api.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+// import org.springframework.web.bind.annotation.RequestMapping;
 
-inport java.util.List;
+// import java.util.List;
 
-@ResetController
-@RequestMapping("/report")
-public class ReportController {
+// @ResetController
+// @RequestMapping("/report")
+// public class ReportController {
 
-    private final ReportService reportService;
-    private final ReportDtoMapper dtoMapper;
+// private final ReportService reportService;
+// private final ReportDtoMapper dtoMapper;
 
-    // pour plus tard : return new ResponseEntity<>(dtoMapper.mapModelToDto(reportService.getReportById(id)), HttpStatus.OK); 
-}
+// // pour plus tard : return new
+// // ResponseEntity<>(dtoMapper.mapModelToDto(reportService.getReportById(id)),
+// // HttpStatus.OK);
+// }
