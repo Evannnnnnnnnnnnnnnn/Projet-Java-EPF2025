@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.tree.RowMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -19,25 +21,25 @@ public class DaoZombie {
 
     public List<ZombieEntity> findAll() {
         String sql = "SELECT * FROM pvz.zombie";
-        return jdbcTemplate.query(sql, new ReportRowMapper());
+        return jdbcTemplate.query(sql, new ZombieRowMapper());
     }
     
     public ZombieEntity findById(Long id) {
         String sql = "SELECT nom, point_de_vie, attaque_par_seconde, degat_attaque, vitesse_de_deplacement, chemin_image FROM zombie WHERE id = ?";
-        List<ZombieEntity> zombies = jdbcTemplate.query(sql, new ReportRowMapper(), id);
+        List<ZombieEntity> zombies = jdbcTemplate.query(sql, new ZombieRowMapper(), id);
         return zombies.isEmpty() ? null : zombies.get(0);
     }
     
-    private static class ReportRowMapper implements RowMapper<ReportEntity> {
+    private static class ZombieRowMapper implements RowMapper<ZombieEntity> {
         @Override
-        public ReportEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-            ReportEntity report = new ReportEntity();
-            report.setId(rs.getLong("id"));
-            report.setFirstName(rs.getString("first_name"));
-            report.setLastName(rs.getString("last_name"));
-            report.setSubmissionDate(rs.getDate("submission_date"));
-            report.setScore(rs.getInt("score"));
-            return report;
+        public ZombieEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+            ZombieEntity zombie = new ZombieEntity();
+            zombie.setId(rs.getLong("id"));
+            zombie.setFirstName(rs.getString("first_name"));
+            zombie.setLastName(rs.getString("last_name"));
+            zombie.setSubmissionDate(rs.getDate("submission_date"));
+            zombie.setScore(rs.getInt("score"));
+            return zombie;
         }
     }
 }
