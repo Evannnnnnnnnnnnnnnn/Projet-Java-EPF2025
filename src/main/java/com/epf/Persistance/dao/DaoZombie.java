@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.swing.tree.RowMapper;
+import org.springframework.jdbc.core.RowMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,12 +33,16 @@ public class DaoZombie {
     private static class ZombieRowMapper implements RowMapper<ZombieEntity> {
         @Override
         public ZombieEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+            // id_zombie | nom | point_de_vie | attaque_par_seconde | degat_attaque | vitesse_de_deplacement | chemin_image 
             ZombieEntity zombie = new ZombieEntity();
-            zombie.setId(rs.getLong("id"));
-            zombie.setFirstName(rs.getString("first_name"));
-            zombie.setLastName(rs.getString("last_name"));
-            zombie.setSubmissionDate(rs.getDate("submission_date"));
-            zombie.setScore(rs.getInt("score"));
+            zombie.setId_zombie_entity(rs.getInt("id"));
+            zombie.setNom_zombie_entity(rs.getString("nom"));
+            zombie.setPoint_de_vie_zombie_entity(rs.getInt("point_de_vie"));
+            zombie.setAttaque_par_seconde_zombie_entity(rs.getDouble("attaque_par_seconde"));
+            zombie.setDegat_attaque_zombie_entity(rs.getInt("degat_attaque"));
+            zombie.setVitesse_de_deplacement_zombie_entity(rs.getDouble("vitesse_de_deplacement"));
+            zombie.setChemin_image_zombie_entity(rs.getString("chemin_image"));
+
             return zombie;
         }
     }
