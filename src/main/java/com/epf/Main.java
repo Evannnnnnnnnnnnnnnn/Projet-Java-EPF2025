@@ -1,9 +1,7 @@
 package com.epf;
 
-import java.io.FileInputStream;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,7 +15,7 @@ public class Main {
         Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME); // pour enlever les messages de debug dans le terminal
         root.setLevel(Level.ERROR);
 
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Persistance.class)) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
             JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
 
             String sql = "Show Tables";
