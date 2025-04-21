@@ -37,7 +37,7 @@ public class DaoPlante {
             // id_plante | nom | point_de_vie | attaque_par_seconde | degat_attaque | cout |
             // soleil_par_seconde | effet | chemin_image
             PlanteEntity plante = new PlanteEntity();
-            plante.setId_plante_entity(rs.getInt("id"));
+            plante.setId_plante_entity(rs.getInt("id_plante"));
             plante.setNom_plante_entity(rs.getString("nom"));
             plante.setPoint_de_vie_plante_entity(rs.getInt("point_de_vie"));
             plante.setAttaque_par_seconde_plante_entity(rs.getDouble("attaque_par_seconde"));
