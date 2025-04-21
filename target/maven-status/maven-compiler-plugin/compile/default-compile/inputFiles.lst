@@ -7,8 +7,10 @@ C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\api\dto\Zo
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\api\mapper\MapDtoMapper.java
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\api\mapper\PlanteDtoMapper.java
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\api\mapper\ZombieDtoMapper.java
+C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\config\AppInitializer.java
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\config\SpringConifg.java
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\config\WebAppInitializer.java
+C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\config\WebConfig.java
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\core\model\Map.java
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\core\model\Plante.java
 C:\Ecole\EPF-4A\Semestre 8\Langage Java\TP\TP 4\src\main\java\com\epf\core\model\Zombie.java

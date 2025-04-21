@@ -3,6 +3,7 @@ com\epf\persistance\entities\PlanteEntity.class
 com\epf\persistance\mapper\MapEntityMapper.class
 com\epf\api\controller\MapController.class
 com\epf\core\model\Zombie.class
+com\epf\persistance\dao\DaoPlante$PlanteRowMapper.class
 com\epf\persistance\repository\ZombieRepository.class
 com\epf\api\dto\ZombieDto.class
 com\epf\api\dto\PlanteDto.class
@@ -22,6 +23,7 @@ com\epf\core\Validator.class
 com\epf\api\dto\MapDto.class
 com\epf\core\service\PlanteService.class
 com\epf\persistance\repository\MapRepository.class
+com\epf\persistance\dao\DaoMap$MapRowMapper.class
 com\epf\persistance\dao\DaoPlante.class
 com\epf\Main.class
 com\epf\api\mapper\MapDtoMapper.class
