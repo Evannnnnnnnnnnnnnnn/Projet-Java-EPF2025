@@ -1,3 +1,5 @@
+// Vieux fichier pour tester la connexion à la base de données
+
 package com.epf;
 
 import java.util.List;

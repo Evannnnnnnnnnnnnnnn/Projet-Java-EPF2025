@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.example")
+@ComponentScan(basePackages = "com.epf")
 public class SpringConifg implements WebMvcConfigurer {
 
     @Bean

@@ -1,5 +1,31 @@
 package com.epf.persistance.mapper;
 
+import java.util.List;
+
+import com.epf.core.model.Map;
+import com.epf.persistance.entities.MapEntity;
+
 public class MapEntityMapper {
+
+    public Map mapEntityToModel(MapEntity entity) {
+        if (entity == null) {
+            return null;
+        } else {
+            // id_map | ligne | colonne | chemin_image
+            Map map = new Map();
+            map.setId_map_model(entity.getId_map_entity());
+            map.setLigne_map_model(entity.getLigne_map_entity());
+            map.setColonne_map_model(entity.getColonne_map_entity());
+            map.setChemin_image_map_model(entity.getChemin_image_map_entity());
+
+            return map;
+        }
+    }
+
+    public List<Map> mapListEntityToListModel(List<MapEntity> entities) {
+        return entities.stream()
+                .map(this::mapEntityToModel)
+                .toList();
+    }
 
 }
