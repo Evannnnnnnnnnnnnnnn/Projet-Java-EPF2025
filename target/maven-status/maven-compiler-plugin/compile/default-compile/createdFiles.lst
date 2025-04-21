@@ -13,7 +13,6 @@ com\epf\persistance\dao\DaoZombie$ZombieRowMapper.class
 com\epf\api\mapper\PlanteDtoMapper.class
 com\epf\api\controller\PlanteController.class
 com\epf\persistance\entities\ZombieEntity.class
-com\epf\config\WebAppInitializer.class
 com\epf\api\controller\ZombieController.class
 com\epf\config\AppInitializer.class
 com\epf\core\service\ZombieService.class

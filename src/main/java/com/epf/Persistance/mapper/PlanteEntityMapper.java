@@ -2,9 +2,12 @@ package com.epf.persistance.mapper;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.epf.core.model.Plante;
 import com.epf.persistance.entities.PlanteEntity;
 
+@Component
 public class PlanteEntityMapper {
 
     public Plante mapEntityToModel(PlanteEntity entity) {

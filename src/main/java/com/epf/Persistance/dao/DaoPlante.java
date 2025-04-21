@@ -7,9 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.epf.persistance.entities.PlanteEntity;
 
+@Repository
 public class DaoPlante {
     private final JdbcTemplate jdbcTemplate;
 

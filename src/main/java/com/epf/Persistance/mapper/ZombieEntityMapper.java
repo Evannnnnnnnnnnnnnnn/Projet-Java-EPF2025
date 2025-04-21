@@ -9,6 +9,7 @@ import com.epf.persistance.entities.ZombieEntity;
 
 @Component
 public class ZombieEntityMapper {
+    
     public Zombie mapEntityToModel(ZombieEntity entity) {
         if (entity == null) {
             return null;

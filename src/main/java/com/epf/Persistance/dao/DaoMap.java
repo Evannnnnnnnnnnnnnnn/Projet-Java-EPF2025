@@ -5,11 +5,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.epf.persistance.entities.MapEntity;
 
+@Repository
 public class DaoMap {
     private final JdbcTemplate jdbcTemplate;
 
