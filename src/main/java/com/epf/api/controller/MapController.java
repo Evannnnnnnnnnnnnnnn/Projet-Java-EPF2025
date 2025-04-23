@@ -36,7 +36,7 @@ public class MapController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MapDto> getMapById(@PathVariable Long id) {
+    public ResponseEntity<MapDto> getMapById(@PathVariable("id") Long id) {
         Map map = mapService.findById(id);
         if (map == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

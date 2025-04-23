@@ -35,7 +35,7 @@ public class ZombieController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ZombieDto> getZombieById(@PathVariable Long id) {
+    public ResponseEntity<ZombieDto> getZombieById(@PathVariable("id") Long id) {
         Zombie zombie = zombieService.findById(id);
         if (zombie == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
