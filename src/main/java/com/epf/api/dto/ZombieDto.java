@@ -1,5 +1,7 @@
 package com.epf.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ZombieDto {
     // id_zombie | nom | point_de_vie | attaque_par_seconde | degat_attaque | vitesse_de_deplacement | chemin_image 
     int id_zombie;
@@ -22,24 +24,31 @@ public class ZombieDto {
         this.chemin_image = chemin_image;
     }
 
+    @JsonProperty("id_zombie")
     public int getId_zombie_dto() {return id_zombie;}
     public void setId_zombie_dto(int id_zombie) {this.id_zombie = id_zombie;}
 
+    @JsonProperty("nom")
     public String getNom_zombie_dto() {return nom;}
     public void setNom_zombie_dto(String nom) {this.nom = nom;}
 
+    @JsonProperty("point_de_vie")
     public int getPoint_de_vie_zombie_dto() {return point_de_vie;}
     public void setPoint_de_vie_zombie_dto(int point_de_vie) {this.point_de_vie = point_de_vie;}
 
+    @JsonProperty("attaque_par_seconde")
     public double getAttaque_par_seconde_zombie_dto() {return attaque_par_seconde;}
     public void setAttaque_par_seconde_zombie_dto(double attaque_par_seconde) {this.attaque_par_seconde = attaque_par_seconde;}
 
+    @JsonProperty("degat_attaque")
     public int getDegat_attaque_zombie_dto() {return degat_attaque;}
     public void setDegat_attaque_zombie_dto(int degat_attaque) {this.degat_attaque = degat_attaque;}
 
+    @JsonProperty("vitesse_de_deplacement")
     public double getVitesse_de_deplacement_zombie_dto() {return vitesse_de_deplacement;}
     public void setVitesse_de_deplacement_zombie_dto(double vitesse_de_deplacement) {this.vitesse_de_deplacement = vitesse_de_deplacement;}
 
+    @JsonProperty("chemin_image")
     public String getChemin_image_zombie_dto() {return chemin_image;}
     public void setChemin_image_zombie_dto(String chemin_image) {this.chemin_image = chemin_image;}
 }
