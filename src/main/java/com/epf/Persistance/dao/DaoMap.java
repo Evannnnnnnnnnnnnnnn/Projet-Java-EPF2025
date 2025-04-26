@@ -31,6 +31,30 @@ public class DaoMap {
         return maps.isEmpty() ? null : maps.get(0);
     }
 
+    public void create(MapEntity map) {
+        String sql = "INSERT INTO pvz.map (ligne, colonne, chemin_image) VALUES (?, ?, ?)"; // On ne met pas id_map car c'est auto-incrémenté
+        jdbcTemplate.update(
+                sql,
+                map.getLigne_map_entity(),
+                map.getColonne_map_entity(),
+                map.getChemin_image_map_entity());
+    }
+
+    public void update(MapEntity map) {
+        String sql = "UPDATE pvz.map SET ligne = ?, colonne = ?, chemin_image = ? WHERE id_map = ?";
+        jdbcTemplate.update(
+                sql,
+                map.getLigne_map_entity(),
+                map.getColonne_map_entity(),
+                map.getChemin_image_map_entity(),
+                map.getId_map_entity());
+    }
+
+    public void delete(Long id) {
+        String sql = "DELETE FROM pvz.map WHERE id_map = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
     private static class MapRowMapper implements RowMapper<MapEntity> {
         @Override
         public MapEntity mapRow(ResultSet rs, int rowNum) throws SQLException {

@@ -28,4 +28,16 @@ public class MapRepository {
     public Map findById(Long id) {
         return mapper.mapEntityToModel(mapDAO.findById(id));
     }
+
+    public void create(Map map) {
+        mapDAO.create(mapper.mapModelToEntity(map));
+    }
+
+    public void update(Map map) {
+        mapDAO.update(mapper.mapModelToEntity(map));
+    }
+
+    public void delete(Long id) {
+        mapDAO.delete(id);
+    }
 }

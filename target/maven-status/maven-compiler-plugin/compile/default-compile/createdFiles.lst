@@ -15,6 +15,7 @@ com\epf\api\controller\PlanteController.class
 com\epf\persistance\entities\ZombieEntity.class
 com\epf\api\controller\ZombieController.class
 com\epf\config\AppInitializer.class
+com\epf\api\controller\CoursEpfBack.class
 com\epf\core\service\ZombieService.class
 com\epf\config\WebConfig.class
 com\epf\persistance\mapper\PlanteEntityMapper.class

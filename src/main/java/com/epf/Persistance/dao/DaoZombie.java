@@ -26,7 +26,7 @@ public class DaoZombie {
     }
     
     public ZombieEntity findById(Long id) {
-        String sql = "SELECT * FROM zombie WHERE id = ?";
+        String sql = "SELECT * FROM pvz.zombie WHERE id_plante = ?";
         List<ZombieEntity> zombies = jdbcTemplate.query(sql, new ZombieRowMapper(), id);
         return zombies.isEmpty() ? null : zombies.get(0);
     }

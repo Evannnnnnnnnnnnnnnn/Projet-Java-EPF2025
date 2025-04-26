@@ -26,7 +26,7 @@ public class DaoPlante {
     }
 
     public PlanteEntity findById(Long id) {
-        String sql = "SELECT * FROM plante WHERE id = ?";
+        String sql = "SELECT * FROM pvz.plante WHERE id_plante = ?";
         List<PlanteEntity> plantes = jdbcTemplate.query(sql, new PlanteRowMapper(), id);
         return plantes.isEmpty() ? null : plantes.get(0);
     }

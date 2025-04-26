@@ -26,4 +26,16 @@ public class MapService {
         return MapRepository.findById(id);
     }
 
+    public void create(Map map) {
+        MapRepository.create(map);
+    }
+
+    public void update(Map map) {
+        MapRepository.update(map);
+    }
+
+    public void delete(Long id) {
+        MapRepository.delete(id);
+    }
+
 }
