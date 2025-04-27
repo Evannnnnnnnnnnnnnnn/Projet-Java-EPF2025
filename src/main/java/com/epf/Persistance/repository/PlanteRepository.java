@@ -28,4 +28,16 @@ public class PlanteRepository {
     public Plante findById(Long id) {
         return mapper.mapEntityToModel(planteDAO.findById(id));
     }
+
+    public void create(Plante plante) {
+        planteDAO.create(mapper.mapModelToEntity(plante));
+    }
+
+    public void update(Plante plante) {
+        planteDAO.update(mapper.mapModelToEntity(plante));
+    }
+
+    public void delete(Long id) {
+        planteDAO.delete(id);
+    }
 }

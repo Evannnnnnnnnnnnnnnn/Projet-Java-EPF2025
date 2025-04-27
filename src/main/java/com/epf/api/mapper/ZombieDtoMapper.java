@@ -13,7 +13,7 @@ public class ZombieDtoMapper {
 
     public ZombieDto mapModelToDto(Zombie zombie) {
         if (zombie == null) {
-            return null;
+            return null;//TODO faire une erreur
         }
         
         ZombieDto dto = new ZombieDto();
@@ -27,6 +27,24 @@ public class ZombieDtoMapper {
         dto.setChemin_image_zombie_dto(zombie.getChemin_image_zombie_model());
 
         return dto;
+    }
+
+    public Zombie mapDtoToModel(ZombieDto dto) {
+        if (dto == null) {
+            return null;//TODO faire une erreur
+        }
+
+        Zombie zombie = new Zombie();
+        // id_zombie | nom | point_de_vie | attaque_par_seconde | degat_attaque | vitesse_de_deplacement | chemin_image
+        zombie.setId_zombie_model(dto.getId_zombie_dto());
+        zombie.setNom_zombie_model(dto.getNom_zombie_dto());
+        zombie.setPoint_de_vie_zombie_model(dto.getPoint_de_vie_zombie_dto());
+        zombie.setAttaque_par_seconde_zombie_model(dto.getAttaque_par_seconde_zombie_dto());
+        zombie.setDegat_attaque_zombie_model(dto.getDegat_attaque_zombie_dto());
+        zombie.setVitesse_de_deplacement_zombie_model(dto.getVitesse_de_deplacement_zombie_dto());
+        zombie.setChemin_image_zombie_model(dto.getChemin_image_zombie_dto());
+
+        return zombie;
     }
     
     public List<ZombieDto> mapListModelToListDto(List<Zombie> zombie) {

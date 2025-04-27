@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.epf.core.model.Map;
 import com.epf.persistance.entities.ZombieEntity;
 
 @Repository
@@ -26,9 +27,44 @@ public class DaoZombie {
     }
     
     public ZombieEntity findById(Long id) {
-        String sql = "SELECT * FROM pvz.zombie WHERE id_plante = ?";
+        String sql = "SELECT * FROM pvz.zombie WHERE id_zombie = ?";
         List<ZombieEntity> zombies = jdbcTemplate.query(sql, new ZombieRowMapper(), id);
         return zombies.isEmpty() ? null : zombies.get(0);
+    }
+
+    public void create(ZombieEntity zombie) {
+        String sql = "INSERT INTO pvz.zombie (nom, point_de_vie, attaque_par_seconde, degat_attaque, vitesse_de_deplacement, chemin_image) VALUES (?, ?, ?, ?, ?, ?)"; // On ne met pas id_zombie car c'est auto-incrémenté
+        jdbcTemplate.update(
+                sql,
+                zombie.getNom_zombie_entity(),
+                zombie.getPoint_de_vie_zombie_entity(),
+                zombie.getAttaque_par_seconde_zombie_entity(),
+                zombie.getDegat_attaque_zombie_entity(),
+                zombie.getVitesse_de_deplacement_zombie_entity(),
+                zombie.getChemin_image_zombie_entity());
+    }
+
+    public void update(ZombieEntity zombie) {
+        String sql = "UPDATE pvz.zombie SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, degat_attaque = ?, vitesse_de_deplacement = ?, chemin_image = ? WHERE id_zombie = ?";
+        jdbcTemplate.update(
+                sql,
+                zombie.getNom_zombie_entity(),
+                zombie.getPoint_de_vie_zombie_entity(),
+                zombie.getAttaque_par_seconde_zombie_entity(),
+                zombie.getDegat_attaque_zombie_entity(),
+                zombie.getVitesse_de_deplacement_zombie_entity(),
+                zombie.getChemin_image_zombie_entity(),
+                zombie.getId_zombie_entity());
+    }
+
+    public void delete(Long id) {
+        String sql = "DELETE FROM pvz.zombie WHERE id_zombie = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+    public void deleteFromMap(Map mapToDel) {
+        String sql = "DELETE FROM pvz.zombie WHERE id_map = ?";
+        jdbcTemplate.update(sql, mapToDel.getId_map_model());
     }
     
     private static class ZombieRowMapper implements RowMapper<ZombieEntity> {

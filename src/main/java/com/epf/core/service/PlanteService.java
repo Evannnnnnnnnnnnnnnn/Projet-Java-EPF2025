@@ -25,4 +25,16 @@ public class PlanteService {
     public Plante findById(Long id) {
         return planteRepository.findById(id);
     }
+
+    public void create(Plante plante) {
+        planteRepository.create(plante);
+    }
+
+    public void update(Plante plante) {
+        planteRepository.update(plante);
+    }
+
+    public void delete(Long id) {
+        planteRepository.delete(id);
+    }
 }

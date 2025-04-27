@@ -31,6 +31,40 @@ public class DaoPlante {
         return plantes.isEmpty() ? null : plantes.get(0);
     }
 
+    public void create(PlanteEntity plante) {
+        String sql = "INSERT INTO pvz.plante (nom, point_de_vie, attaque_par_seconde, degat_attaque, cout, soleil_par_seconde, effet, chemin_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; // On ne met pas id_plante car c'est auto-incrémenté
+        jdbcTemplate.update(
+                sql,
+                plante.getNom_plante_entity(),
+                plante.getPoint_de_vie_plante_entity(),
+                plante.getAttaque_par_seconde_plante_entity(),
+                plante.getDegat_attaque_plante_entity(),
+                plante.getCout_plante_entity(),
+                plante.getSoleil_par_seconde_plante_entity(),
+                plante.getEffet_plante_entity(),
+                plante.getChemin_image_plante_entity());
+    }
+
+    public void update(PlanteEntity plante) {
+        String sql = "UPDATE pvz.plante SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, degat_attaque = ?, cout = ?, soleil_par_seconde = ?, effet = ?, chemin_image = ? WHERE id_plante = ?";
+        jdbcTemplate.update(
+                sql,
+                plante.getNom_plante_entity(),
+                plante.getPoint_de_vie_plante_entity(),
+                plante.getAttaque_par_seconde_plante_entity(),
+                plante.getDegat_attaque_plante_entity(),
+                plante.getCout_plante_entity(),
+                plante.getSoleil_par_seconde_plante_entity(),
+                plante.getEffet_plante_entity(),
+                plante.getChemin_image_plante_entity(),
+                plante.getId_plante_entity());
+    }
+
+    public void delete(Long id) {
+        String sql = "DELETE FROM pvz.plante WHERE id_plante = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
     private static class PlanteRowMapper implements RowMapper<PlanteEntity> {
         @Override
         public PlanteEntity mapRow(ResultSet rs, int rowNum) throws SQLException {

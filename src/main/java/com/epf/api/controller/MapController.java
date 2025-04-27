@@ -9,7 +9,7 @@ import com.epf.api.dto.MapDto;
 import com.epf.api.mapper.MapDtoMapper;
 import com.epf.core.model.Map;
 import com.epf.core.service.MapService;
-
+import com.epf.core.service.ZombieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,19 +22,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
 @RequestMapping(value = "/maps", produces = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin(origins = "http://localhost:5173")
 public class MapController {
 
+    private final ZombieService zombieService;
+
     private final MapService mapService;
     private final MapDtoMapper mapDtoMapper;
-    
+
     @Autowired
-    public MapController(MapService mapService, MapDtoMapper mapDtoMapper) {
+    public MapController(MapService mapService, MapDtoMapper mapDtoMapper, ZombieService zombieService) {
         this.mapService = mapService;
         this.mapDtoMapper = mapDtoMapper;
+        this.zombieService = zombieService;
     }
 
     @GetMapping // pour les get (infos)
@@ -53,7 +55,7 @@ public class MapController {
         }
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE) // pour les post (ajouter)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE) // pour les post (ajouter) // (consumes = MediaType.APPLICATION_JSON_VALUE) pour pouvoir utiliser postman et les json
     public ResponseEntity<Void> createMap(@RequestBody MapDto mapDto) {
         Map map = mapDtoMapper.mapDtoToModel(mapDto);
         mapService.create(map);
@@ -79,8 +81,11 @@ public class MapController {
         if (map == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
+            // supprimer les zombies de la map avant de supprimer la map
+            zombieService.deleteZombieFromMap(map);
+            // supprimer la map
             mapService.delete(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
     }
 }
