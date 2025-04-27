@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConifg {
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource() {//TODO cacher les infos 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/pvz");

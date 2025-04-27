@@ -9,16 +9,19 @@ import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.epf.core.Errors.ZombieError;
 import com.epf.core.model.Map;
 import com.epf.persistance.entities.ZombieEntity;
 
 @Repository
 public class DaoZombie {
     private final JdbcTemplate jdbcTemplate;
+    private final ZombieError zombieError;
     
     @Autowired
     public DaoZombie(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        this.zombieError = new ZombieError("DAO Zombie Error");
     }
 
     public List<ZombieEntity> findAll() {
@@ -33,6 +36,15 @@ public class DaoZombie {
     }
 
     public void create(ZombieEntity zombie) {
+        try {
+            zombieError.validateZombie(zombie); // Validation de l'entité avant l'insertion
+        } catch (Error e) {
+            System.out.println("Erreur de validation : " + e.getMessage());
+            return; // Sortir de la méthode si la validation échoue
+        } catch (Exception e) {
+            System.out.println("Les problèmes :(\n" + e.getMessage());
+            return; // Sortir de la méthode s'il y a une autre exception
+        }
         String sql = "INSERT INTO pvz.zombie (nom, point_de_vie, attaque_par_seconde, degat_attaque, vitesse_de_deplacement, chemin_image) VALUES (?, ?, ?, ?, ?, ?)"; // On ne met pas id_zombie car c'est auto-incrémenté
         jdbcTemplate.update(
                 sql,
@@ -45,6 +57,15 @@ public class DaoZombie {
     }
 
     public void update(ZombieEntity zombie) {
+        try {
+            zombieError.validateZombie(zombie); // Validation de l'entité avant l'insertion
+        } catch (Error e) {
+            System.out.println("Erreur de validation : " + e.getMessage());
+            return; // Sortir de la méthode si la validation échoue
+        } catch (Exception e) {
+            System.out.println("Les problèmes :(\n" + e.getMessage());
+            return; // Sortir de la méthode s'il y a une autre exception
+        }
         String sql = "UPDATE pvz.zombie SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, degat_attaque = ?, vitesse_de_deplacement = ?, chemin_image = ? WHERE id_zombie = ?";
         jdbcTemplate.update(
                 sql,

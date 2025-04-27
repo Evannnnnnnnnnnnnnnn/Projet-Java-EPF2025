@@ -9,15 +9,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.epf.core.Errors.PlanteError;
 import com.epf.persistance.entities.PlanteEntity;
 
 @Repository
 public class DaoPlante {
     private final JdbcTemplate jdbcTemplate;
+    private final PlanteError planteError;
 
     @Autowired
     public DaoPlante(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        this.planteError = new PlanteError("DAO Plante Error");
     }
 
     public List<PlanteEntity> findAll() {
@@ -32,6 +35,15 @@ public class DaoPlante {
     }
 
     public void create(PlanteEntity plante) {
+        try {
+            planteError.validatePlante(plante); // Validation de l'entité avant l'insertion
+        } catch (Error e) {
+            System.out.println("Erreur de validation : " + e.getMessage());
+            return; // Sortir de la méthode si la validation échoue
+        } catch (Exception e) {
+            System.out.println("Les problèmes :(\n" + e.getMessage());
+            return; // Sortir de la méthode s'il y a une autre exception
+        }
         String sql = "INSERT INTO pvz.plante (nom, point_de_vie, attaque_par_seconde, degat_attaque, cout, soleil_par_seconde, effet, chemin_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; // On ne met pas id_plante car c'est auto-incrémenté
         jdbcTemplate.update(
                 sql,
@@ -46,6 +58,15 @@ public class DaoPlante {
     }
 
     public void update(PlanteEntity plante) {
+        try {
+            planteError.validatePlante(plante); // Validation de l'entité avant l'insertion
+        } catch (Error e) {
+            System.out.println("Erreur de validation : " + e.getMessage());
+            return; // Sortir de la méthode si la validation échoue
+        } catch (Exception e) {
+            System.out.println("Les problèmes :(\n" + e.getMessage());
+            return; // Sortir de la méthode s'il y a une autre exception
+        }
         String sql = "UPDATE pvz.plante SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, degat_attaque = ?, cout = ?, soleil_par_seconde = ?, effet = ?, chemin_image = ? WHERE id_plante = ?";
         jdbcTemplate.update(
                 sql,

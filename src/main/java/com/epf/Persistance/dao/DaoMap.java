@@ -10,29 +10,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.epf.persistance.entities.MapEntity;
+import com.epf.core.Errors.MapError;
 
 @Repository
 public class DaoMap {
     private final JdbcTemplate jdbcTemplate;
+    private final MapError mapError;
 
     @Autowired
     public DaoMap(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        this.mapError = new MapError("DAO Map Error");
     }
 
-    public List<MapEntity> findAll() {
+    public List<MapEntity> findAll() { // pas besoin de validation ici, car sql ne fait rien si l'id n'existe pas
         String sql = "SELECT * FROM pvz.map";
         return jdbcTemplate.query(sql, new MapRowMapper());
     }
 
-    public MapEntity findById(Long id) {
+    public MapEntity findById(Long id) {// pas besoin de validation ici, car sql ne fait rien si l'id n'existe pas
         String sql = "Select * FROM pvz.map WHERE id_map = ?";
         List<MapEntity> maps = jdbcTemplate.query(sql, new MapRowMapper(), id);
         return maps.isEmpty() ? null : maps.get(0);
     }
 
-    public void create(MapEntity map) {
-        String sql = "INSERT INTO pvz.map (ligne, colonne, chemin_image) VALUES (?, ?, ?)"; // On ne met pas id_map car c'est auto-incrémenté
+    public void create(MapEntity map)  {
+        try {
+            mapError.validateMap(map); // Validation de l'entité avant l'insertion
+        } catch (MapError e) {
+            System.out.println("Erreur de validation : " + e.getMessage());
+            return; // Sortir de la méthode si la validation échoue
+        } catch (Exception e) {
+            System.out.println("Les problèmes :(\n" + e.getMessage());
+            return; // Sortir de la méthode s'il y a une autre exception
+        }
+        String sql = "INSERT INTO pvz.map (ligne, colonne, chemin_image) VALUES (?, ?, ?)";
         jdbcTemplate.update(
                 sql,
                 map.getLigne_map_entity(),
@@ -41,6 +53,15 @@ public class DaoMap {
     }
 
     public void update(MapEntity map) {
+        try {
+            mapError.validateMap(map); // Validation de l'entité avant l'insertion
+        } catch (MapError e) {
+            System.out.println("Erreur de validation : " + e.getMessage());
+            return; // Sortir de la méthode si la validation échoue
+        } catch (Exception e) {
+            System.out.println("Les problèmes :(\n" + e.getMessage());
+            return; // Sortir de la méthode s'il y a une autre exception
+        }
         String sql = "UPDATE pvz.map SET ligne = ?, colonne = ?, chemin_image = ? WHERE id_map = ?";
         jdbcTemplate.update(
                 sql,
@@ -50,7 +71,7 @@ public class DaoMap {
                 map.getId_map_entity());
     }
 
-    public void delete(Long id) {
+    public void delete(Long id) {// pas de validation ici, car sql ne fait rien si l'id n'existe pas
         String sql = "DELETE FROM pvz.map WHERE id_map = ?";
         jdbcTemplate.update(sql, id);
     }
