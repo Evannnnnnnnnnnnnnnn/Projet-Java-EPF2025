@@ -76,7 +76,7 @@ public class DaoMap {
         jdbcTemplate.update(sql, id);
     }
 
-    private static class MapRowMapper implements RowMapper<MapEntity> {
+    public static class MapRowMapper implements RowMapper<MapEntity> {
         @Override
         public MapEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
             // id_map | ligne | colonne | chemin_image
