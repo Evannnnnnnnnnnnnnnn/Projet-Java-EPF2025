@@ -18,7 +18,7 @@ public class MapError extends Exception {
             throw new MapError("Invalid map dimensions: " + map.getLigne_map_model() + "l x" + map.getColonne_map_model() + "c");
         }
         if (map.getChemin_image_map_model() == null || map.getChemin_image_map_model().isEmpty()) {
-            map.setChemin_image_map_model("placeholder.webp"); // Default image path
+            map.setChemin_image_map_model("images/map/placeholderMap.png"); // Default image path
         }
     }
 
@@ -30,7 +30,7 @@ public class MapError extends Exception {
             throw new MapError("Invalid map dimensions: " + map.getLigne_map_entity() + "l x" + map.getColonne_map_entity() + "c");
         }
         if (map.getChemin_image_map_entity() == null || map.getChemin_image_map_entity().isEmpty()) {
-            map.setChemin_image_map_entity("placeholder.webp"); // Default image path
+            map.setChemin_image_map_entity("images/map/placeholderMap.png"); // Default image path
         }
     }
 
@@ -42,7 +42,7 @@ public class MapError extends Exception {
             throw new MapError("Invalid map dimensions: " + map.getLigne_map_dto() + "l x" + map.getColonne_map_dto() + "c");
         }
         if (map.getChemin_image_map_dto() == null || map.getChemin_image_map_dto().isEmpty()) {
-            map.setChemin_image_map_dto("placeholder.webp"); // Default image path
+            map.setChemin_image_map_dto("images/map/placeholderMap.png"); // Default image path
         }
     }
 }

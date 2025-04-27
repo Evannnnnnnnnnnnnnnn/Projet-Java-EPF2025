@@ -30,7 +30,7 @@ public class ZombieError extends Exception {
             throw new ZombieError("Invalid speed: " + zombie.getVitesse_de_deplacement_zombie_entity());
         }
         if (zombie.getChemin_image_zombie_entity() == null || zombie.getChemin_image_zombie_entity().isEmpty()) {
-            zombie.setChemin_image_zombie_entity("placeholder.webp"); // Default image path
+            zombie.setChemin_image_zombie_entity("images/zombie/placeholderZombie.jpg"); // Default image path
         }
     }
 
@@ -54,7 +54,7 @@ public class ZombieError extends Exception {
             throw new ZombieError("Invalid speed: " + zombie.getVitesse_de_deplacement_zombie_model());
         }
         if (zombie.getChemin_image_zombie_model() == null || zombie.getChemin_image_zombie_model().isEmpty()) {
-            zombie.setChemin_image_zombie_model("placeholder.webp"); // Default image path
+            zombie.setChemin_image_zombie_model("images/zombie/placeholderZombie.jpg"); // Default image path
         }
     }
 
@@ -78,7 +78,7 @@ public class ZombieError extends Exception {
             throw new ZombieError("Invalid speed: " + zombie.getVitesse_de_deplacement_zombie_dto());
         }
         if (zombie.getChemin_image_zombie_dto() == null || zombie.getChemin_image_zombie_dto().isEmpty()) {
-            zombie.setChemin_image_zombie_dto("placeholder.webp"); // Default image path
+            zombie.setChemin_image_zombie_dto("images/zombie/placeholderZombie.jpg"); // Default image path
         }
     }
 }

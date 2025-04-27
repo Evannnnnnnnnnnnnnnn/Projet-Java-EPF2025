@@ -40,7 +40,7 @@ public class PlanteError extends Exception {
                     "Invalid effect: " + effet + ". Must be one of: normal, slow low, slow medium, slow stop");
         }
         if (plante.getChemin_image_plante_model() == null || plante.getChemin_image_plante_model().isEmpty()) {
-            plante.setChemin_image_plante_model("placeholder.webp"); // Default image path
+            plante.setChemin_image_plante_model("images\\   plante\\placeholderPlante.png"); // Default image path
         }
     }
 
@@ -74,7 +74,7 @@ public class PlanteError extends Exception {
                     "Invalid effect: " + effet + ". Must be one of: normal, slow low, slow medium, slow stop");
         }
         if (plante.getChemin_image_plante_entity() == null || plante.getChemin_image_plante_entity().isEmpty()) {
-            plante.setChemin_image_plante_entity("placeholder.webp"); // Default image path
+            plante.setChemin_image_plante_entity("images\\plante\\placeholderPlante.png"); // Default image path
         }
     }
 
@@ -108,7 +108,7 @@ public class PlanteError extends Exception {
                     "Invalid effect: " + effet + ". Must be one of: normal, slow low, slow medium, slow stop");
         }
         if (plante.getChemin_image_plante_dto() == null || plante.getChemin_image_plante_dto().isEmpty()) {
-            plante.setChemin_image_plante_dto("placeholder.webp"); // Default image path
+            plante.setChemin_image_plante_dto("images\\plante\\placeholderPlante.png"); // Default image path
         }
     }
 }
